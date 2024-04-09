@@ -47,4 +47,53 @@ public class GestorPermisos {
 		this.ciudadanos = new ArrayList<>();
 		this.permisos = new ArrayList<>();
 	}
+	public boolean ciudadanoExiste(Ciudadano ciudadano){
+		for (Ciudadano c : this.ciudadanos){
+			if(ciudadano.getRut()==c.getRut()){
+				return true;
+			}
+		} return false;
+	}
+	public void agregarCiudadano(Ciudadano ciudadano){
+		if(!ciudadanoExiste(ciudadano)){
+			this.ciudadanos.add(ciudadano);
+			System.out.println("Ciudadano " + ciudadano.getNombre() + " agregado correctamente");
+		}
+	}
+	public boolean permisoExiste(Permiso permiso){
+		for (Permiso p : this.permisos){
+			if(permiso.getIdentificador()==p.getIdentificador()){
+				return true;
+			}
+		} return false;
+	}
+	public void registrarPermiso(Permiso permiso){
+		if(!permisoExiste(permiso)){
+			this.permisos.add(permiso);
+			System.out.println("Permiso registrado correctamente");
+		}
+	}
+	public List<Permiso> buscarPermisosCiudadano(Ciudadano ciudadano){
+		List<Permiso> permisosCiudadano = ciudadano.getPermisos();
+		System.out.println("Permisos del Ciudadano guardados correctamente");
+		return permisosCiudadano;
+	}
+	public List<Permiso> buscarPermisos(String tipo, LocalDate fechaEmision, LocalDate fechaVencimiento){
+		List<Permiso> permisosTipo = new ArrayList<>();
+		for(Permiso permiso : this.permisos){
+			if(permiso.getTipoPermiso().equals(tipo)&&permiso.getFechaEmision().equals(fechaEmision)&&permiso.getFechaVencimiento().equals(fechaVencimiento)){
+				permisosTipo.add(permiso);
+			}
+		} return permisosTipo;
+	}
+	public void mostrarPermisosCiudadano(Ciudadano ciudadano){
+		List<Permiso> permisosMostrar = buscarPermisosCiudadano(ciudadano);
+		System.out.println("Los permisos del ciudadano se mostraran a continuacion: ");
+		for(Permiso permiso : permisosMostrar){
+			System.out.println(permiso.getIdentificador());
+		}
+	}
+	public void mostrarInfoPermiso(Permiso permiso){
+		permiso.mostrarDetallesPermiso();
+	}
 }

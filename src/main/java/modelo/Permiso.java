@@ -6,6 +6,7 @@ public abstract class Permiso {
 	protected LocalDate fechaEmision;
 	protected LocalDate fechaVencimiento;
 	protected int identificador;
+	protected int costoBase;
 
 	public LocalDate getFechaEmision() {
 		return this.fechaEmision;
@@ -30,12 +31,19 @@ public abstract class Permiso {
 	public void setIdentificador(int identificador) {
 		this.identificador = identificador;
 	}
-
-	public abstract void costoPermiso();
-
-	public Permiso(LocalDate fechaEmision, LocalDate fechaVencimiento, int identificador) {
+	public int getCostoBase() {
+		return costoBase;
+	}
+	public void setCostoBase(int costoBase) {
+		this.costoBase = costoBase;
+	}
+	public abstract double costoPermiso();
+	public abstract String getTipoPermiso();
+	public Permiso(LocalDate fechaEmision, LocalDate fechaVencimiento, int identificador, int costoBase) {
 		this.fechaEmision = fechaEmision;
 		this.fechaVencimiento = fechaVencimiento;
 		this.identificador = identificador;
+		this.costoBase = costoBase;
 	}
+	public abstract void mostrarDetallesPermiso();
 }
