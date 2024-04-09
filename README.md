@@ -8,4 +8,4 @@ En la clase EventoEspecial tendremos tres atributos: tipoEvento que sera un atri
 # UML DIAGRAMA
 ![img_1.png](img_1.png)
 # Pruebas del programa funcionando
-![img.png](img.png)
+![image](https://github.com/azambrano02/Control_09_04/assets/146024498/f1352a79-d29e-4633-ba56-d3f1a6d862d6)
